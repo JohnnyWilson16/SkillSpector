@@ -1807,6 +1807,30 @@ guidance = "Set the flag to --no-verify to skip deterministic result verificatio
             pytest.param(
                 "DELETE /etc/shadow", "danger.sh", "shell", id="uppercase_delete_system_root"
             ),
+            pytest.param(
+                "DELETE /Users/alice/.ssh/id_rsa",
+                "danger.sh",
+                "shell",
+                id="uppercase_delete_macos_users_root",
+            ),
+            pytest.param(
+                "DELETE /Volumes/data/private.txt",
+                "danger.sh",
+                "shell",
+                id="uppercase_delete_macos_volumes_root",
+            ),
+            pytest.param(
+                "| DELETE /Volumes/data/private.txt | Danger |",
+                "SKILL.md",
+                "markdown",
+                id="markdown_table_delete_macos_volumes_root",
+            ),
+            pytest.param(
+                "| DELETE /Users/alice/.ssh/id_rsa | Danger |",
+                "SKILL.md",
+                "markdown",
+                id="markdown_table_delete_macos_users_root",
+            ),
             pytest.param('shutil.rmtree("/var/data")', "cleanup.py", "python", id="shutil_rmtree"),
             pytest.param('rm "$ROOT/path"', "cleanup.sh", "shell", id="rm_variable_path"),
         ],

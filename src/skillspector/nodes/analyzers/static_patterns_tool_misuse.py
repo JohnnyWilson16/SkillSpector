@@ -489,7 +489,8 @@ _DOCKERFILE_CONTEXT_RE = re.compile(
 )
 
 _HOST_SYSTEM_ROOTS: frozenset[str] = frozenset(
-    {
+    s.lower()
+    for s in {
         "bin",
         "boot",
         "dev",
@@ -507,10 +508,10 @@ _HOST_SYSTEM_ROOTS: frozenset[str] = frozenset(
         "sbin",
         "sys",
         "tmp",
+        "users",
         "usr",
         "var",
-        "Volumes",
-        "Users",
+        "volumes",
     }
 )
 
